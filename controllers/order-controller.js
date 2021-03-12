@@ -5,19 +5,19 @@ const Employees = require('../model/employees');
 const { validationResult } = require('express-validator');
 
 // Add new order 
-exports.addOrder = (req, res, next) => {
+exports.addOrder = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).send({ error: "true", message: errors.array()[0].msg });
   }
   const customer = await Customers.findByPk(req.body.customerNumber);
-  if(!customer) return res.status(404).send({ error: true, message: "Customer does not exists"});
+  if(!customer) return res.status(404).send({ error: true, message: "Customer does not exist"});
 
   const service = await Services.findByPk(req.body.serviceCode);
-  if(!service) return res.status(404).send({ error: true, message: "Service does not exists"});
+  if(!service) return res.status(404).send({ error: true, message: "Service does not exist"});
 
   const employee = await Employees.findByPk(req.body.employeeNumber);
-  if(!employee) return res.status(404).send({ error: true, message: "Employee does not exists"});
+  if(!employee) return res.status(404).send({ error: true, message: "Employee does not exist"});
 
   Order.create({
     customerNumber: req.body.customerNumber,
@@ -64,10 +64,10 @@ exports.findOrder = (req, res, next) => {
 // Update an order
 exports.update = async (req, res, next) => {
   const service = await Services.findByPk(req.body.serviceCode);
-  if(!service) return res.status(404).send({ error: true, message: "Service does not exists"});
+  if(!service) return res.status(404).send({ error: true, message: "Service does not exist"});
 
   const employee = await Employees.findByPk(req.body.employeeNumber);
-  if(!employee) return res.status(404).send({ error: true, message: "Employee does not exists"});
+  if(!employee) return res.status(404).send({ error: true, message: "Employee does not exist"});
 
     Order.findByPk(req.params.orderNumber)
     .then(order => {

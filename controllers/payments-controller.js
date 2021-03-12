@@ -4,17 +4,17 @@ const Order = require('../model/order');
 const { validationResult } = require('express-validator');
 
 // Add new payment 
-exports.addPayment = (req, res, next) => {
+exports.addPayment = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).send({ error: "true", message: errors.array()[0].msg });
   }
 
   const customer = await Customers.findByPk(req.body.customerNumber);
-  if(!customer) return res.status(404).send({ error: true, message: "Customer does not exists"});
+  if(!customer) return res.status(404).send({ error: true, message: "Customer does not exist"});
 
   const order = await Order.findByPk(req.body.orderNumber);
-  if(!order) return res.status(404).send({ error: true, message: "Order does not exists"});
+  if(!order) return res.status(404).send({ error: true, message: "Order does not exist"});
 
   Payments.create({
     orderNumber: req.body.orderNumber,
