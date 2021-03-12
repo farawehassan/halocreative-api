@@ -8,6 +8,9 @@ exports.addEmployee = (req, res, next) => {
   if (!errors.isEmpty()) {
     return res.status(422).send({ error: "true", message: errors.array()[0].msg });
   }
+  const employee = await Employees.findOne({where: {email: req.body.email} });
+  if(employee) return res.status(404).send({ error: true, message: "Email exists already, use another one"});
+
   Office.findByPk(req.body.officeCode)
     .then(result => {
       if(result){
@@ -26,7 +29,7 @@ exports.addEmployee = (req, res, next) => {
             return res.status(500).send({ error: true, message: "Database operation failed" });
           });
       } else {
-        return res.status(200).send({ error: false, message: "0ffice not available", data: result});
+        return res.status(404).send({ error: true, message: "0ffice not available"});
       }
     })
     .catch(err => {
@@ -81,7 +84,7 @@ exports.update = async (req, res, next) => {
           return res.status(500).send({ error: true, message: "Database operation failed" });
         });
       } else {
-        return res.status(200).send({ error: false, message: "0ffice not available", data: result});
+        return res.status(404).send({ error: true, message: "0ffice not available"});
       }
     })
     .catch(err => {

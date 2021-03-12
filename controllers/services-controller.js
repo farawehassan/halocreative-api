@@ -12,7 +12,6 @@ exports.addServices = (req, res, next) => {
     serviceDescription: req.body.serviceDescription
   })
     .then(result => {
-      console.log(result);
       return res.status(200).send({ error: false, message: "Sucessfully created service", data: result });
     })
     .catch(err => {
