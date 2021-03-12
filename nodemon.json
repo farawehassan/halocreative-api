@@ -4,7 +4,7 @@
         "SQL_DATABASE": "heroku_40412cefefb8adf",
         "SQL_USER": "bc13b06766f843",
         "SQL_PASSWORD": "c34c828b",
-        "SQL_PORT": "3306",
+        "SQL_PORT": "3400",
         "JWT_SECRET": "my-ultra-secure-and-ultra-long-secret"
     }
 } 

@@ -19,14 +19,14 @@ exports.addEmployee = (req, res, next) => {
     .then(result => {
       return res.status(200).send({ error: false, message: "Sucessfully created employee", data: result });
     })
-    .catch(err => {
+    .catch(err => { 
       return res.status(500).send({ error: true, message: "Database operation failed" });
     });
 }
 
 // Fetch all available employees
 exports.fetchAllEmployee = (req, res, next) => {  
-    Employees.findAll({ include: [{ model: Office }] })
+    Employees.findAll()
     .then(result => {
       return res.status(200).send({ error: false, message: "Sucessfully fetched all employees", data: result });
     })
