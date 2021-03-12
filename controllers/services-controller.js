@@ -13,7 +13,7 @@ exports.addServices = (req, res, next) => {
   })
     .then(result => {
       console.log(result);
-      return res.status(200).send({ error: false, message: "Sucessfully created employee", data: result });
+      return res.status(200).send({ error: false, message: "Sucessfully created service", data: result });
     })
     .catch(err => {
       return res.status(500).send({ error: true, message: "Database operation failed" });
