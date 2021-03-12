@@ -29,10 +29,10 @@ exports.addOrder = async (req, res, next) => {
     amountPaid: req.body.amountPaid,
   })
     .then(result => {
-      console.log(result);
       return res.status(200).send({ error: false, message: "Sucessfully created order", data: result });
     })
     .catch(err => {
+      console.log(err);
       return res.status(500).send({ error: true, message: "Database operation failed" });
     });
 }
