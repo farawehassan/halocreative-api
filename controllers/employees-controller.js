@@ -26,7 +26,7 @@ exports.addEmployee = (req, res, next) => {
 
 // Fetch all available employees
 exports.fetchAllEmployee = (req, res, next) => {  
-    Employees.findAll({include: Office})
+    Employees.findAll(/*{include: Office}*/)
     .then(result => {
       return res.status(200).send({ error: false, message: "Sucessfully fetched all employees", data: result });
     })
