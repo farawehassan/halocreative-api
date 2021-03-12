@@ -23,6 +23,7 @@ exports.addOrder = async (req, res, next) => {
     customerNumber: req.body.customerNumber,
     serviceCode: req.body.serviceCode,
     employeeNumber: req.body.employeeNumber,
+    orderDate: req.body.orderDate,
     quantity: req.body.quantity,
     status: req.body.status,
     amount: req.body.amount,
@@ -73,6 +74,7 @@ exports.update = async (req, res, next) => {
     .then(order => {
         order.serviceCode = req.body.serviceCode,
         order.employeeNumber = req.body.employeeNumber,
+        order.orderDate = req.body.orderDate,
         order.quantity = req.body.quantity,
         order.status = req.body.status,
         order.amount = req.body.amount,
