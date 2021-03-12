@@ -1,0 +1,10 @@
+{
+    "env":{
+        "SQL_SERVER": "us-cdbr-east-03.cleardb.com",
+        "SQL_DATABASE": "hallocreativedb",
+        "SQL_USER": "bc13b06766f843",
+        "SQL_PASSWORD": "c34c828b",
+        "SQL_PORT": "3306",
+        "JWT_SECRET": "my-ultra-secure-and-ultra-long-secret"
+    }
+} 
