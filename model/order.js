@@ -37,7 +37,6 @@ const Order = sequelize.define('order', {
   },
   orderDate: {
     type:  Sequelize.DATE,
-    allowNull: false,
     default: Sequelize.NOW
   },
   quantity: {
