@@ -58,7 +58,7 @@ app.use(compression());
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }))
 
-const port = process.env.SQL_PORT || 3306;
+const port = process.env.PORT || 3306;
 
 let server;
 
