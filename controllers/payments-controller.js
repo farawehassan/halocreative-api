@@ -24,7 +24,6 @@ exports.addPayment = async (req, res, next) => {
     status: req.body.status  
   })
     .then(result => {
-      console.log(result);
       return res.status(200).send({ error: false, message: "Sucessfully created payment", data: result });
     })
     .catch(err => {
