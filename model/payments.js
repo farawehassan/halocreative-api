@@ -33,7 +33,7 @@ const Payment = sequelize.define('payment', {
     allowNull: false,
   },
   status: {
-    type: Sequelize.STRING,
+    type: Sequelize.ENUM("success", "failed"),
     allowNull: false,
   },
   createdAt: {

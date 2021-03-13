@@ -13,7 +13,7 @@ router.get('/fecthOne/:serviceCode', serviceController.findService);
 router.post('/add', serviceController.addServices);
 
 // Update a service's details in the database
-router.put('/update/:serviceCode', serviceController.update);
+router.patch('/update/:serviceCode', serviceController.update);
 
 // Delete a service 
 router.delete('/delete/:serviceCode', serviceController.deleteOne);

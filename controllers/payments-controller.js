@@ -19,7 +19,6 @@ exports.addPayment = async (req, res, next) => {
   Payments.create({
     orderNumber: req.body.orderNumber,
     customerNumber: req.body.customerNumber,
-    paymentDate: req.body.paymentDate,
     amount: req.body.amount,
     status: req.body.status  
   })
@@ -57,7 +56,11 @@ exports.findPayment = (req, res, next) => {
 
 // Update a payment 
 exports.update = async (req, res, next) => {
-    Payments.findByPk(req.params.paymentId)
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).send({ error: "true", message: errors.array()[0].msg });
+  }
+  Payments.findByPk(req.params.paymentId)
     .then(payment => {
         payment.paymentDate = req.body.paymentDate,
         payment.amount = req.body.amount,

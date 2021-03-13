@@ -64,6 +64,10 @@ exports.findOrder = (req, res, next) => {
 
 // Update an order
 exports.update = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).send({ error: "true", message: errors.array()[0].msg });
+  }
   const service = await Services.findByPk(req.body.serviceCode);
   if(!service) return res.status(404).send({ error: true, message: "Service does not exist"});
 

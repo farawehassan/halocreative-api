@@ -44,7 +44,7 @@ const Order = sequelize.define('order', {
     allowNull: false,
   },
   status: {
-    type: Sequelize.STRING,
+    type: Sequelize.ENUM("installment", "one-off"),
     allowNull: false,
   },
   amount: {

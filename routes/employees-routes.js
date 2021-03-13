@@ -8,12 +8,24 @@ router.get('/fecthAll', employeeController.fetchAllEmployee);
 
 // Find an office from the database
 router.get('/fecthOne/:employeeNumber', employeeController.findEmployee);
-                                                                        
+
 // Add new office to the database
-router.post('/add', employeeController.addEmployee);
+router.post('/add', [
+  body('email')
+    .isEmail()
+    .withMessage('Please enter a valid email address')
+    .normalizeEmail()
+  ], employeeController.addEmployee
+);
 
 // Update an office's details in the database
-router.put('/update/:employeeNumber', employeeController.update);
+router.patch('/update/:employeeNumber',  [
+  body('email')
+    .isEmail()
+    .withMessage('Please enter a valid email address')
+    .normalizeEmail()
+  ], employeeController.update
+);
 
 // Delete an office details
 router.delete('/delete/:employeeNumber', employeeController.deleteOne);

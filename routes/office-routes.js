@@ -13,7 +13,7 @@ router.get('/fecth/:officeCode', officeController.findOffice);
 router.post('/add', officeController.addOffice);
 
 // Update an office's details in the database
-router.put('/update/:officeCode', officeController.update);
+router.patch('/update/:officeCode', officeController.update);
 
 // Delete an office details
 router.delete('/delete/:officeCode', officeController.deleteOne);

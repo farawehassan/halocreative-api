@@ -13,7 +13,7 @@ router.get('/fecthOne/:customerNumber', customerController.findCustomer);
 router.post('/add', customerController.addCustomer);
 
 // Update a customer's details in the database
-router.put('/update/:customerNumber', customerController.update);
+router.patch('/update/:customerNumber', customerController.update);
 
 // Delete a customer details
 router.delete('/delete/:customerNumber', customerController.deleteOne);
